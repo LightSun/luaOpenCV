@@ -4,13 +4,21 @@ project(luaOpenCV)
 
 
 option(BUILD_TESTS "Builds the unit test" TRUE)
-option(LOCAL_LUA_DIRECTORY "local lua library directory" "third_party/lua-5.3.3")
-set(LOCAL_LUA_DIRECTORY "third_party/lua-5.3.3")
+option(LOCAL_LUA_DIRECTORY "local lua library directory" "third_party/lua-5.3.6")
+set(LOCAL_LUA_DIRECTORY "third_party/lua-5.3.6")
 
-include(cmake/FindLua.cmake)
+#include(cmake/FindLua.cmake)
+
+set(LUA_INCLUDE_DIRS ${LOCAL_LUA_DIRECTORY}/src)
+set(LUA_LIBRARY_DIRS ${LOCAL_LUA_DIRECTORY}/lib) #lib will to
+set(LUA_LIBRARIES lua5.3.6)
+
+
+
 
 set(CMAKE_PREFIX_PATH third_party/opencvlib)
-FIND_PACKAGE(OpenCV 3.1.0 REQUIRED)
+#3.1.0 ?
+FIND_PACKAGE(OpenCV REQUIRED)
 
 include_directories(BEFORE ${LUA_INCLUDE_DIRS})
 link_directories(${LUA_LIBRARY_DIRS})
@@ -22,7 +30,7 @@ include_directories(BEFORE ${OpenCV_INCLUDE_DIRS})
 if(MSVC)
  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /bigobj")
 else(MSVC)
- set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++17")
 endif(MSVC)
 
 
