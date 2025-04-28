@@ -1,0 +1,11 @@
+{
+    "files.associations": {
+        "atomic": "cpp",
+        "*.tcc": "cpp",
+        "fstream": "cpp",
+        "sstream": "cpp",
+        "*.ipp": "cpp",
+        "memory": "cpp",
+        "condition_variable": "cpp"
+    }
+}
